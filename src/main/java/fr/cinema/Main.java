@@ -1,12 +1,13 @@
 package fr.cinema;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
        
         MoviesDatabase readMovies = new MoviesDatabase();
-        String content = readMovies.readAllMovies();
+        List<String> content = readMovies.readAllMovies();
         System.out.println(content);
 
         System.out.println("Bienvenue cher client, quel film voulez vous voir ?");
@@ -19,7 +20,13 @@ public class Main {
         // methode 3  suggerée :
         String film = System.console().readLine();
         System.out.println("Le film recheché est : " + film);
-
+        
+        String filmChoice = readMovies.getMovieInfo(film);
+        if (filmChoice != null) {
+            System.out.println("le film choisi : " + filmChoice);
+        } else {
+            System.out.println("pas de film !!");
+        }
         
     }
 }
